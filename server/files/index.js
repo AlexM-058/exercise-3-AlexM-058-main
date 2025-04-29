@@ -28,8 +28,7 @@ function appendMovie(movie, element) {
           .append(new ParagraphBuilder().items(
               "Runtime " + formatRuntime(movie.Runtime),
               "\u2022",
-              "Released on " +
-                new Date(movie.Released).toLocaleDateString("en-US")))
+              "Released on " + new Date(movie.Released).toLocaleDateString('de-DE', {day: '2-digit', month: '2-digit', year: 'numeric'})))
           .append(new ParagraphBuilder().childClass("genre").items(movie.Genres))
           .append(new ElementBuilder("p").text(movie.Plot))
           .append(new ElementBuilder("h2").pluralizedText("Director", movie.Directors))
@@ -63,7 +62,7 @@ function loadMovies(genre) {
   const url = new URL("/movies", location.href)
   /* Task 1.4. Add query parameter to the url if a genre is given */
  if (genre){
-  url.searchParams.append("Genres",genre);
+  url.searchParams.append("genre",genre);
  }
   xhr.open("GET", url)
   xhr.send()

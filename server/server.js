@@ -31,7 +31,7 @@ app.get('/genres',function (req,res){
  */
 app.get('/movies', function (req, res) {
   let movies = Object.values(movieModel)
-  const genre = req.query.Genres;
+  const genre = req.query.genre;
   if (genre) {
     movies = movies.filter(movie => movie.Genres.includes(genre));
   }
