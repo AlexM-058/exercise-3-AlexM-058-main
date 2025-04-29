@@ -75,22 +75,22 @@ window.onload = function () {
 
     if (xhr.status === 200) {
       const genres = JSON.parse(xhr.responseText);
-      const genreList = document.getElementById('genre-list');
-
+      
+      //All
       const allLi =document.createElement('li');
       const allButton = document.createElement('button');
       allButton.textContent = 'All';
       allButton.addEventListener('click',() => loadMovies());
       allLi.appendChild(allButton)
-      genreList.appendChild(allLi)
-
+      listElement.appendChild(allLi)
+      // Each 
       genres.forEach(genres=> {
         const li = document.createElement('li');
         const button = document.createElement('button')
         button.textContent = genres ;
         button.addEventListener('click', () => loadMovies(genres));
         li.appendChild(button);
-        genreList.appendChild(li);
+        listElement.appendChild(li);
         
       });
       /* Task 1.3. Add the genre buttons to the listElement and 
